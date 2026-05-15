@@ -437,6 +437,51 @@ footer {
   font-size: 0.78rem; color: rgba(255,255,255,0.35);
 }
 
+/* ===== 一键联系导航按钮 ===== */
+.nav-links-jump {
+  background: linear-gradient(90deg, #1db954, #17a849) !important;
+  color: #fff !important; padding: 0.45rem 1.1rem;
+  border-radius: 2rem; font-weight: 600 !important;
+  animation: navPulse 2.5s infinite;
+}
+.nav-links-jump:hover { filter: brightness(1.1); }
+@keyframes navPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(29,185,84,0.5); }
+  50%      { box-shadow: 0 0 0 6px rgba(29,185,84,0); }
+}
+
+/* ===== 一键联系横幅 ===== */
+.links-banner {
+  background: linear-gradient(90deg, #0d1a0f 0%, #1a2e1a 50%, #0d1a0f 100%);
+  border-top: 2px solid #1db954; border-bottom: 2px solid #1db954;
+}
+.links-banner-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 1.2rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+}
+.lb-left { display: flex; align-items: center; gap: 1rem; }
+.lb-icon { font-size: 2rem; }
+.lb-title {
+  font-family: var(--font-serif); font-size: 1.05rem;
+  color: #1db954; font-weight: 600; margin-bottom: 0.2rem;
+}
+.lb-sub { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+.lb-btn {
+  display: inline-block; text-decoration: none;
+  background: linear-gradient(90deg, #1db954, #17a849);
+  color: #fff; font-weight: 700; font-family: var(--font-serif);
+  padding: 0.7rem 2rem; border-radius: 2rem; font-size: 1rem;
+  letter-spacing: 0.1em; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(29,185,84,0.4);
+  transition: all 0.3s; animation: navPulse 2.5s infinite;
+}
+.lb-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(29,185,84,0.5); }
+@media (max-width: 600px) {
+  .links-banner-inner { flex-direction: column; text-align: center; }
+  .lb-left { flex-direction: column; gap: 0.5rem; }
+}
+
 /* ===== 滚动动画 ===== */
 .fade-in {
   opacity: 0; transform: translateY(30px);
