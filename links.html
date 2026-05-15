@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蒸福运 · 一键联系 | 五行食养 蒸是福气</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1208;
+  --ink2: #2d2417;
+  --tea: #c9a96e;
+  --tea2: #d4b878;
+  --cream: #f5f0e8;
+  --green1: #1db954;
+  --green2: #17a849;
+  --green3: #128a3a;
+  --font-serif: 'Noto Serif SC', 'SimSun', serif;
+  --font-sans: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(160deg, #0f0a04 0%, #1a1208 40%, #0d1a0f 100%);
+  min-height: 100vh; color: #fff;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* 顶部返回 */
+.back-bar {
+  width: 100%; padding: 0.8rem 1.5rem;
+  display: flex; align-items: center;
+}
+.back-bar a {
+  color: rgba(255,255,255,0.4); text-decoration: none;
+  font-size: 0.8rem; letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.back-bar a:hover { color: var(--tea); }
+
+/* 主容器 */
+.container {
+  width: 100%; max-width: 560px;
+  padding: 0 1.2rem 3rem;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* 品牌头部 */
+.brand-head {
+  text-align: center; padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+  width: 100%; margin-bottom: 2.5rem;
+}
+.brand-logo {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, #4a3520, #2d1a08);
+  border: 2px solid rgba(201,169,110,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 1.8rem; color: var(--tea);
+  margin: 0 auto 1.2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.brand-name {
+  font-family: var(--font-serif); font-size: 2rem;
+  color: var(--tea); letter-spacing: 0.15em; margin-bottom: 0.3rem;
+}
+.brand-slogan {
+  font-size: 0.82rem; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.15em;
+}
+
+/* 标题区 */
+.hero-title {
+  text-align: center; margin-bottom: 2rem; width: 100%;
+}
+.hero-title h1 {
+  font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700;
+  color: #fff; margin-bottom: 0.8rem; line-height: 1.4;
+}
+.hero-title h1 em {
+  color: var(--green1); font-style: normal;
+}
+.tip-box {
+  background: rgba(29,185,84,0.08);
+  border: 1px solid rgba(29,185,84,0.25);
+  border-radius: 0.5rem; padding: 0.7rem 1.2rem;
+  font-size: 0.85rem; color: rgba(255,255,255,0.7);
+  line-height: 1.7; text-align: center;
+}
+.tip-box strong { color: var(--green1); }
+
+/* 引导文字 */
+.guide-text {
+  text-align: center; margin: 2rem 0 1.2rem; width: 100%;
+}
+.guide-text p {
+  font-size: 0.88rem; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em; margin-bottom: 0.4rem;
+}
+.guide-text strong {
+  font-family: var(--font-serif); font-size: 1.15rem;
+  color: var(--green1); letter-spacing: 0.08em;
+}
+
+/* 按钮组 */
+.btn-group { width: 100%; display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
+
+.jump-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+  width: 100%; padding: 1.3rem 1.5rem;
+  font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700;
+  letter-spacing: 0.1em; color: #fff; text-decoration: none;
+  border: none; cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+  position: relative; overflow: hidden;
+}
+.jump-btn:active { transform: scale(0.98); }
+.jump-btn:hover { filter: brightness(1.12); }
+.jump-btn .btn-icon { font-size: 1.5rem; }
+.jump-btn .btn-arrow {
+  position: absolute; right: 1.5rem;
+  font-size: 1.1rem; opacity: 0.6;
+}
+
+/* 按钮颜色 */
+.btn-wechat {
+  background: linear-gradient(90deg, #1db954 0%, #17a849 100%);
+  border-bottom: 3px solid #0e7a34;
+}
+.btn-wechat:hover { background: linear-gradient(90deg, #22d060, #1db954); }
+
+.btn-video {
+  background: linear-gradient(90deg, #e8562a 0%, #d44420 100%);
+  border-bottom: 3px solid #a32d10;
+}
+.btn-video:hover { background: linear-gradient(90deg, #f06030, #e8562a); }
+
+.btn-shop {
+  background: linear-gradient(90deg, #c9a96e 0%, #a8843a 100%);
+  border-bottom: 3px solid #7a5e20;
+}
+.btn-shop:hover { background: linear-gradient(90deg, #d4b878, #c9a96e); }
+
+.btn-whatsapp {
+  background: linear-gradient(90deg, #25d366 0%, #1ab858 100%);
+  border-bottom: 3px solid #128a3a;
+}
+.btn-whatsapp:hover { background: linear-gradient(90deg, #2ae070, #25d366); }
+
+.btn-home {
+  background: linear-gradient(90deg, #3a5068 0%, #2a3d52 100%);
+  border-bottom: 3px solid #1a2a38;
+}
+.btn-home:hover { background: linear-gradient(90deg, #4a6280, #3a5068); }
+
+/* 分隔线 */
+.sep {
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.4), transparent);
+}
+
+/* 底部提示 */
+.footer-tip {
+  width: 100%; text-align: center;
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 0.5rem; padding: 0.8rem 1.2rem;
+  font-size: 0.82rem; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.05em; line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.footer-tip strong { color: var(--tea); }
+
+/* 产品卡片预览 */
+.product-preview {
+  width: 100%; margin-bottom: 2rem;
+}
+.product-preview h3 {
+  font-family: var(--font-serif); font-size: 0.85rem;
+  color: rgba(255,255,255,0.35); letter-spacing: 0.2em;
+  text-align: center; margin-bottom: 1rem;
+}
+.preview-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem;
+}
+.preview-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,169,110,0.12);
+  border-radius: 0.5rem; padding: 0.8rem 0.3rem;
+  text-align: center;
+}
+.preview-item .pi-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+.preview-item .pi-name { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
+.preview-item .pi-badge {
+  font-size: 0.55rem; color: var(--tea);
+  margin-top: 0.2rem; letter-spacing: 0.05em;
+}
+
+/* 版权 */
+.copyright {
+  font-size: 0.72rem; color: rgba(255,255,255,0.2);
+  text-align: center; padding-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(29,185,84,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(29,185,84,0); }
+}
+.btn-wechat { animation: pulse 2.5s infinite; }
+
+/* 数字角标 */
+.badge {
+  background: #e8562a; color: white;
+  font-size: 0.65rem; font-weight: 700; font-family: var(--font-sans);
+  padding: 0.15rem 0.5rem; border-radius: 2rem;
+  position: absolute; top: 0.7rem; right: 4rem;
+  letter-spacing: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a href="index.html">← 返回蒸福运官网</a>
+</div>
+
+<div class="container">
+
+  <!-- 品牌头部 -->
+  <div class="brand-head">
+    <div class="brand-logo">蒸</div>
+    <div class="brand-name">蒸福运</div>
+    <div class="brand-slogan">五行食养 · 蒸是福气</div>
+  </div>
+
+  <!-- 标题区 -->
+  <div class="hero-title">
+    <h1>把养生<em>交给</em>蒸福运！</h1>
+    <div class="tip-box">
+      五行配伍本草馒头，药食同源古法配方。<br>
+      <strong>三餐可食，老少适配，日常轻养生首选主食。</strong>
+    </div>
+  </div>
+
+  <!-- 五行产品速览 -->
+  <div class="product-preview">
+    <h3>✦ 五行养生馒头系列 ✦</h3>
+    <div class="preview-grid">
+      <div class="preview-item">
+        <div class="pi-icon">🌸</div>
+        <div class="pi-name">润肺款</div>
+        <div class="pi-badge">金·肺</div>
+      </div>
+      <div class="preview-item">
+        <div class="pi-icon">🌹</div>
+        <div class="pi-name">疏肝款</div>
+        <div class="pi-badge">木·肝</div>
+      </div>
+      <div class="preview-item">
+        <div class="pi-icon">🫐</div>
+        <div class="pi-name">益肾款</div>
+        <div class="pi-badge">水·肾</div>
+      </div>
+      <div class="preview-item">
+        <div class="pi-icon">🔴</div>
+        <div class="pi-name">养心款</div>
+        <div class="pi-badge">火·心</div>
+      </div>
+      <div class="preview-item" style="border-color:rgba(201,169,110,0.35)">
+        <div class="pi-icon">🍠</div>
+        <div class="pi-name">健脾款</div>
+        <div class="pi-badge" style="color:#e8c060">土·脾⭐</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引导语 -->
+  <div class="guide-text">
+    <p>点击下方按钮添加客服</p>
+    <strong>立即咨询·下单订购·获取专属优惠</strong>
+  </div>
+
+  <!-- 跳转按钮组 -->
+  <div class="btn-group">
+
+    <a href="#" class="jump-btn btn-wechat" onclick="jumpTo(event,'wechat')">
+      <span class="btn-icon">💬</span>
+      点击此处添加微信客服
+      <span class="badge">在线</span>
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <div class="sep"></div>
+
+    <a href="#" class="jump-btn btn-video" onclick="jumpTo(event,'video')">
+      <span class="btn-icon">📱</span>
+      点击进入视频号小店
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <div class="sep"></div>
+
+    <a href="#" class="jump-btn btn-shop" onclick="jumpTo(event,'shop')">
+      <span class="btn-icon">🛒</span>
+      点击立即下单购买
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <div class="sep"></div>
+
+    <a href="#" class="jump-btn btn-whatsapp" onclick="jumpTo(event,'whatsapp')">
+      <span class="btn-icon">📲</span>
+      点击添加 WhatsApp
+      <span class="btn-arrow">›</span>
+    </a>
+
+    <div class="sep"></div>
+
+    <a href="index.html" class="jump-btn btn-home">
+      <span class="btn-icon">🏡</span>
+      查看品牌官网
+      <span class="btn-arrow">›</span>
+    </a>
+
+  </div>
+
+  <!-- 底部提示 -->
+  <div class="footer-tip">
+    <strong>名额有限，先到先得</strong>，现在下单享受<strong>首单优惠</strong>。<br>
+    顺丰冷链配送 · 全程品质保障 · 支持售后退换
+  </div>
+
+  <div class="copyright">
+    © 2025 蒸福运 · 三餐食本草，岁岁自安康
+  </div>
+
+</div>
+
+<script>
+function jumpTo(e, type) {
+  e.preventDefault();
+  const links = {
+    wechat:   'https://weixin.qq.com/',       // 替换为你的微信二维码页面或链接
+    video:    'https://channels.weixin.qq.com/', // 替换为你的视频号小店链接
+    shop:     'https://channels.weixin.qq.com/', // 替换为你的购买链接
+    whatsapp: 'https://wa.me/86XXXXXXXXXX'    // 替换为你的 WhatsApp 号码
+  };
+  if (links[type]) {
+    window.open(links[type], '_blank');
+  }
+}
+</script>
+</body>
+</html>
